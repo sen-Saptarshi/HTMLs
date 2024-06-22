@@ -106,7 +106,7 @@ nav {
 }
 
 .skill-category {
-  max-width: 400px;
+  width: 200px;
 }
 
 .skill-category h3 {
@@ -234,4 +234,10 @@ footer {
 
 .social-links a:hover {
   color: #4a90e2;
+}
+
+a{
+  text-decoration: none;
+  color: #4a90e2;
+  cursor: pointer;
 }
