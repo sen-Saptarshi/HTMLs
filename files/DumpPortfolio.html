@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Developer Portfolio</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="scripts.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap"
+    />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo">MyPortfolio</div>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section id="hero">
+      <div class="hero-content">
+        <h1>Hello, I'm a <span id="role" class="highlight"></span></h1>
+        <p>Creating modern and responsive web applications</p>
+        <a href="#projects" class="btn">View My Work</a>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <h2>About Me</h2>
+      <div class="content">
+        <img src="./meimage.jpg" alt="Profile Picture" class="profile-pic" />
+        <p>
+          Passionate web developer with experience in creating dynamic and
+          user-friendly websites...
+        </p>
+      </div>
+    </section>
+
+    <section id="skills" class="section">
+      <h2>Skills</h2>
+      <div class="skills-container">
+        <div class="skill-category">
+          <h3>Languages</h3>
+          <div class="skills-list">
+            <div class="skill">
+              <i class="fab fa-cuttlefish"></i>
+              <span>C++</span>
+            </div>
+            <div class="skill">
+              <i class="fab fa-python"></i>
+              <span>Python</span>
+            </div>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3>Frontend</h3>
+          <div class="skills-list">
+            <div class="skill">
+              <i class="fab fa-react"></i>
+              <span>React</span>
+            </div>
+            <div class="skill">
+              <i class="fab fa-css3-alt"></i>
+              <span>Tailwind CSS</span>
+            </div>
+            <div class="skill">
+              <i class="fab fa-bootstrap"></i>
+              <span>Bootstrap</span>
+            </div>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3>Backend</h3>
+          <div class="skills-list">
+            <div class="skill">
+              <i class="fab fa-node-js"></i>
+              <span>Node.js</span>
+            </div>
+            <div class="skill">
+              <i class="fas fa-server"></i>
+              <span>Express.js</span>
+            </div>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3>Database</h3>
+          <div class="skills-list">
+            <div class="skill">
+              <i class="fas fa-database"></i>
+              <span>MongoDB</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <h2>Projects</h2>
+      <div class="project-cards">
+        <div class="card">
+          <img src="https://via.placeholder.com/300" alt="Project 1" />
+          <h3>Project 1</h3>
+          <p>Project description goes here...</p>
+        </div>
+        <div class="card">
+          <img src="https://via.placeholder.com/300" alt="Project 2" />
+          <h3>Project 2</h3>
+          <p>Project description goes here...</p>
+        </div>
+        <!-- Add more project cards as needed -->
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <h2>Let's Connect</h2>
+      <form id="contactForm" onsubmit="sendEmail(event)">
+        <input type="text" placeholder="Name" required />
+        <input type="email" placeholder="Email" required />
+        <textarea placeholder="Message" required></textarea>
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+    </section>
+
+    <footer>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+      </div>
+      <p>&copy; 2024 MyPortfolio. All Rights Reserved.</p>
+    </footer>
+  </body>
+</html>

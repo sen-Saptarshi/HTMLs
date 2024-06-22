@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RandomStrings</title>
+    <style>
+      body {
+        margin: 0;
+        background-color: peachpuff;
+        font-family: "Courier New", Courier, monospace;
+        color: rgb(193, 255, 79);
+        filter: sepia(0.6);
+      }
+      #output {
+        margin: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 40px;
+        background-color: rgba(0, 42, 255, 0.501);
+        border-radius: 20px;
+        filter: drop-shadow(0 0 0.75rem black);
+      }
+      h2 {
+        border-radius: 5px;
+        background-color: rgba(216, 191, 216, 0.523);
+      }
+    </style>
+  </head>
+  <body>
+    <div style="display: flex; justify-content: center">
+      <div id="output">
+        <h1>Random Strings?</h1>
+      </div>
+      <input type="range" id="sapio" />
+    </div>
+    <script>
+      let n = prompt("enter the number of characters in otp");
+      let x = prompt("enter the number of otps:");
+      for (let index = 0; index < x; index++) {
+        let s = "";
+        for (let index = 0; index < n; index++) {
+          s = s + String.fromCharCode(Math.random() * 94 + 33);
+        }
+        document.getElementById("output").innerHTML += `<h2>${s}</h2>`;
+      }
+      document.getElementById("sapio").addEventListener("input", function () {
+        const value = this.value;
+        document.body.style.filter = `sepia(${value}%)`;
+      });
+    </script>
+  </body>
+</html>

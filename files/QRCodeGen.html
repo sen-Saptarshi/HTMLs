@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        font-family: "Courier New", Courier, monospace;
+        background-color: rgb(228, 126, 228);
+      }
+      img {
+        mix-blend-mode: color-burn;
+        filter: contrast(150%);
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      style="
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      "
+    >
+      <h2>Create And Read Your QR Codes</h2>
+      <input type="text" placeholder="Enter Text" />
+      <button onclick="createQR()">Create QR</button>
+      <img src="" alt="" />
+    </div>
+    <script>
+      function createQR() {
+        let text = document.querySelector("input").value;
+        let img = document.querySelector("img");
+        img.src = `https://api.qrserver.com/v1/create-qr-code/?size=450x450&data=${text}`;
+      }
+    </script>
+  </body>
+</html>

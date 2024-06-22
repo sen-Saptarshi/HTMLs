@@ -1,0 +1,124 @@
+<html>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: 0f111a;
+      position: relative;
+      top: 20%;
+      left: 10%;
+      overflow: hidden;
+    }
+    .canvas {
+      width: 500px;
+      height: 400px;
+      background-color: 090b10;
+    }
+    .cup {
+      width: 200px;
+      height: 200px;
+      background-color: #fff;
+      position: relative;
+      top: 100px;
+      left: 150px;
+      border-bottom-right-radius: 50%;
+      border-bottom-left-radius: 50%;
+      border-top-left-radius: 10%;
+      border-top-right-radius: 10%;
+      background: linear-gradient(#ffffffc1, #000000c0),
+        linear-gradient(90deg, #ffffff, #00e5ff);
+      z-index: 2;
+    }
+    .handle {
+      width: 100px;
+      height: 100px;
+      background-color: #ffffff00;
+      position: relative;
+      top: -90px;
+      left: 70px;
+      border: 20px solid rgb(194, 194, 194);
+      border-radius: 50%;
+      z-index: 1;
+    }
+    .plate {
+      width: 300px;
+      height: 300px;
+      background-color: #fff;
+      border-radius: 50%;
+      scale: 1 0.2;
+      position: relative;
+      top: -190px;
+      left: 90px;
+      filter: drop-shadow(1px 20px 10px white);
+    }
+    .shadow {
+      width: 100px;
+      height: 100px;
+      background-color: black;
+      border-radius: 50%;
+      scale: 1 0.2;
+      position: relative;
+      top: -390px;
+      left: 200px;
+      filter: blur(17px);
+    }
+    .smokes {
+      width: 200px;
+      height: 100px;
+      position: relative;
+      background-color: #ffffff00;
+      top: -750px;
+      left: 150px;
+    }
+    .clouds {
+      width: 10px;
+      height: 50px;
+      /* position: relative; */
+      background-color: rgb(255, 255, 255);
+      filter: blur(10px);
+      animation: flyer 1s infinite linear;
+    }
+    @keyframes flyer {
+      0% {
+        translate: 0px 0px;
+        filter: blur(10px);
+      }
+      50% {
+        translate: 0px -100px;
+        filter: blur(20px);
+      }
+      100% {
+        translate: 0px -200px;
+        filter: blur(40px);
+      }
+    }
+  </style>
+  <body>
+    <div class="canvas">
+      <div class="cup"></div>
+      <div class="handle"></div>
+      <div class="plate"></div>
+      <div class="shadow"></div>
+      <div class="smokes" style="display: flex; justify-content: space-between">
+        <div class="clouds"></div>
+        <div class="clouds"></div>
+        <div class="clouds"></div>
+        <div class="clouds"></div>
+        <div class="clouds"></div>
+        <div class="clouds"></div>
+        <div class="clouds"></div>
+        <div class="clouds"></div>
+      </div>
+    </div>
+  </body>
+  <script>
+    let clouds = document.querySelectorAll(".clouds");
+    setInterval(() => {
+      for (let i = 0; i < clouds.length; i++) {
+        clouds[i].style.animationDelay = `${Math.random() * 0.8}s`;
+      }
+    }, 2000);
+  </script>
+</html>

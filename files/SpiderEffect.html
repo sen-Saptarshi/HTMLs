@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        color: #31a9ff;
+        font-family: "Segoe UI";
+      }
+      main {
+        width: 100vw;
+        height: 100vh;
+        background-color: #341354;
+        overflow-y: hidden;
+      }
+      .title {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 70px;
+        text-shadow: 0 0 15px #31a9ff;
+        font-weight: 700;
+      }
+      .banner {
+        position: relative;
+      }
+      .banner #dotsCanvas {
+        position: absolute;
+        background-color: transparent;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <div class="banner">
+        <div class="title">
+          <div>SPIDER EFFECT</div>
+        </div>
+        <canvas id="dotsCanvas"></canvas>
+      </div>
+    </main>
+
+    <script>
+      let banner = document.querySelector(".banner");
+      let canvas = document.getElementById("dotsCanvas");
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+      let ctx = canvas.getContext("2d");
+
+      let dots = [];
+      const contrastingColors = [
+        "#FFFFFF", // White
+        "#FFD700", // Gold
+        "#00FF00", // Lime Green
+        "#FF4500", // Orange Red
+        "#00FFFF", // Cyan
+        "#FFFF00", // Yellow
+        "#FF1493", // Deep Pink
+      ];
+
+      for (let index = 0; index < 70; index++) {
+        dots.push({
+          x: Math.floor(Math.random() * canvas.width),
+          y: Math.floor(Math.random() * canvas.height),
+          size: Math.floor(Math.random() * 4) + 2,
+          color: contrastingColors[Math.floor(Math.random() * 7)],
+        });
+      }
+      const drawDots = () => {
+        dots.forEach((dot) => {
+          ctx.beginPath();
+          ctx.arc(dot.x, dot.y, dot.size, 0, 2 * Math.PI);
+          ctx.fillStyle = dot.color;
+          ctx.fill();
+        });
+      };
+      drawDots();
+      banner.addEventListener("mousemove", (e) => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawDots();
+        let mouse = {
+          x: e.pageX - banner.getBoundingClientRect().left,
+          y: e.pageY - banner.getBoundingClientRect().top,
+        };
+        dots.forEach((dot) => {
+          let distance = Math.sqrt(
+            (mouse.x - dot.x) * (mouse.x - dot.x) +
+              (mouse.y - dot.y) * (mouse.y - dot.y)
+          );
+
+          if (distance < 200) {
+            ctx.strokeStyle = dot.color;
+            ctx.lineWidth = 0.5;
+            ctx.beginPath();
+            ctx.moveTo(dot.x, dot.y);
+            ctx.lineTo(mouse.x, mouse.y);
+            ctx.stroke();
+          }
+        });
+      });
+      banner.addEventListener("mouseout", () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawDots();
+      });
+    </script>
+  </body>
+</html>

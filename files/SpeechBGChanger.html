@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- Input area -->
+    <label for="Speech Recognition">Speech Recognition</label>
+    <!-- <input type="text" name="" id="speechToText" placeholder="Speak Something" onclick="record()"> -->
+    <button onclick="record()">Record</button>
+
+    <p id="txt">here it comes</p>
+    <h3>choose any of these:</h3>
+    <p>
+      aqua | azure | beige | bisque | black | blue | brown | chocolate | coral |
+      crimson | cyan | fuchsia | ghostwhite | gold | goldenrod | gray | green |
+      indigo | ivory | khaki | lavender | lime | linen | magenta | maroon |
+      moccasin | navy | olive | orange | orchid | peru | pink | plum | purple |
+      red | salmon | sienna | silver | snow | tan | teal | thistle | tomato |
+      turquoise | violet | white | yellow
+    </p>
+
+    <!-- Below is the script for voice recognition and conversion to text-->
+    <script>
+      function record() {
+        var recognition = new webkitSpeechRecognition();
+        recognition.lang = "en-US";
+
+        recognition.onresult = function (event) {
+          // console.log(event);
+          let res = event.results[0][0].transcript;
+          // document.getElementById('speechToText').value = res;
+          document.getElementById("txt").innerText = res;
+          document.body.style.backgroundColor = res;
+        };
+        recognition.start();
+      }
+    </script>
+    <!-- end of script -->
+  </body>
+</html>

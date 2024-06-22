@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>fetchPractice</title>
+    <style>
+      body {
+        background-color: rgb(65, 0, 130);
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        color: white;
+      }
+      button {
+        margin: 20px;
+        background-color: teal;
+        font-family: "Courier New", Courier, monospace;
+        font-weight: 600;
+        color: white;
+        border: 1px solid teal;
+        border-radius: 20px;
+        padding: 20px;
+        font-size: 20px;
+        filter: drop-shadow(10px 10px 4px rgb(35, 10, 51));
+        transition: all 0.3s;
+      }
+      /* button onclick animation */
+      button:hover {
+        background-color: rgb(4, 155, 162);
+        border-radius: 5px;
+        filter: drop-shadow(5px 5px 0px rgb(0, 0, 0));
+        transform: translateY(5px);
+      }
+      input {
+        padding: 10px;
+        background-color: #7974caa9;
+        font-size: 15px;
+        border: 1px solid rgb(0, 0, 0);
+        border-radius: 10px;
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      style="
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      "
+    >
+      <h1>Weather App ☁️</h1>
+      <h4
+        style="
+          filter: drop-shadow(3px 4px 0px rgb(60, 226, 255));
+          color: rgb(255, 71, 185);
+        "
+      >
+        By Alx_Mrcr
+      </h4>
+      <input type="text" id="city" placeholder="Enter city name" />
+      <button onclick="getWeather()">Get Weather Data</button>
+      <div
+        style="
+          border: 1px solid rgba(255, 255, 255, 0.277);
+          padding: 20px;
+          border-radius: 20px;
+          background-color: rgba(134, 90, 177, 0.353);
+        "
+      >
+        <h5 id="location"></h5>
+        <img src="" />
+        <p></p>
+        <h5 id="temp"></h5>
+      </div>
+    </div>
+    <script>
+      function getWeather() {
+        const city = document.getElementById("city").value;
+        fetch(
+          `https://api.weatherapi.com/v1/current.json?key=49091f8d99f04a799ae64432242104&q=${city}`
+        ).then((res) => {
+          res.json().then((data) => {
+            console.log(data);
+            document.querySelector("p").innerText =
+              data["current"]["condition"]["text"];
+            document.querySelector("img").src =
+              data["current"]["condition"]["icon"];
+            document.getElementById(
+              "temp"
+            ).innerHTML = `Temperature: ${data["current"]["temp_f"]}°F / ${data["current"]["temp_c"]} °C`;
+            document.getElementById(
+              "location"
+            ).innerText = `${data["location"]["name"]} , ${data["location"]["region"]} , ${data["location"]["country"]}`;
+          });
+        });
+      }
+    </script>
+  </body>
+</html>
